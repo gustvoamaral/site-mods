@@ -22,7 +22,7 @@ Este é o Front-end do meu painel pessoal de gerenciamento de mods de Minecraft.
 
 ### Pré-requisitos
 - Ter o **Node.js** instalado.
-- Ter a **API de Mods** rodando localmente na porta `3000`.
+- Ter a **API Mods LabyMod** rodando localmente na porta `3000`. (https://github.com/gustvoamaral/api-mods-labymod)
 
 ### Passos
 
