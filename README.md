@@ -22,7 +22,7 @@ Este é o Front-End do meu painel pessoal de gerenciamento de mods de Minecraft.
 1. Certifique-se de que a API (api-mods-labymod) está rodando localmente na porta `3000`. (https://github.com/gustvoamaral/api-mods-labymod)
 2. Clone este repositório:
    ```sh
-   git clone [https://github.com/gustvoamaral/site-mods.git](https://github.com/gustvoamaral/site-mods.git)
+   git clone https://github.com/gustvoamaral/site-mods.git
 3. Acesse a pasta do projeto: `cd site-mods`
 4. Instale as dependências: `npm install`
 
