@@ -37,6 +37,6 @@ Após executar, acesse o link gerado no seu terminal (geralmente http://localhos
 
 
 ## 📄 Open Source
-Este painel foi desenvolvido totalmente por mim e serve como a minha base principal de estudos para praticar e aprimorar minhas habilidades em programação e desenvolvimento web.
+Este painel foi desenvolvido por mim e serve como a minha base principal de estudos para praticar e aprimorar minhas habilidades em programação e desenvolvimento web.
 
 O projeto é Open Source (código aberto), o que significa que, além de poder acompanhar a minha evolução no código, você é totalmente livre para clonar, estudar, modificar e usar como base para os seus próprios aprendizados e projetos!
