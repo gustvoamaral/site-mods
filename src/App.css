@@ -95,7 +95,7 @@ textarea { resize: vertical; min-height: 80px; }
   padding: 20px; 
   border-radius: 12px; 
   border: 1px solid #334155; 
-  position: relative; /* Segura os elementos absolutos (tags e botões) */
+  position: relative; 
   transition: 0.3s; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -157,14 +157,17 @@ textarea { resize: vertical; min-height: 80px; }
   display: flex; 
   align-items: center; 
   gap: 10px; 
-  margin-top: 35px; /* Empurra o título para baixo para não bater nos botões */
+  margin-top: 35px; 
   margin-bottom: 12px; 
+  flex-wrap: wrap; 
 }
 
 .card-header h2 { 
   margin: 0; 
   font-size: 1.3rem; 
   color: #f8fafc; 
+  flex-grow: 1; 
+  word-break: break-word; 
 }
 
 .badge-v { 
@@ -174,19 +177,20 @@ textarea { resize: vertical; min-height: 80px; }
   color: #3b82f6; 
   font-size: 0.8em; 
   font-weight: bold; 
+  flex-shrink: 0; 
 }
 
 .utilidade { 
   color: #cbd5e1; 
   line-height: 1.5; 
   margin-bottom: 0; 
+  word-break: break-word; 
 }
 
 /* ==========================================
    ESTILOS DA TELA DE LOGIN E AVATARES
    ========================================== */
 
-/* Tela de login centralizada */
 .login-tela {
   display: flex;
   justify-content: center;
@@ -195,7 +199,6 @@ textarea { resize: vertical; min-height: 80px; }
   background-color: #0f172a;
 }
 
-/* Caixa de login parecida com um launcher */
 .login-box {
   background: #1e293b;
   padding: 40px;
@@ -207,9 +210,24 @@ textarea { resize: vertical; min-height: 80px; }
   width: 100%;
 }
 
+/* NOVO: Estilo para a Logo e o Título do Login lado a lado */
+.header-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.logo-labymod {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
 .login-box h1 {
   color: #f8fafc;
-  margin-top: 0;
+  margin: 0; /* Agora a margem é controlada pela div header-box */
 }
 
 .login-box p {
@@ -217,7 +235,6 @@ textarea { resize: vertical; min-height: 80px; }
   margin-bottom: 30px;
 }
 
-/* Preview da skin girando enquanto digita o nick */
 .login-avatar-preview {
   margin-bottom: 25px;
 }
@@ -229,10 +246,9 @@ textarea { resize: vertical; min-height: 80px; }
   border: 3px solid #3b82f6;
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
   background-color: #0f172a;
-  image-rendering: pixelated; /* Deixa o gráfico estilo Minecraft (sem borrar) */
+  image-rendering: pixelated; 
 }
 
-/* Input específico do login */
 .input-login {
   width: 100%;
   box-sizing: border-box;
@@ -241,7 +257,6 @@ textarea { resize: vertical; min-height: 80px; }
   margin-bottom: 20px;
 }
 
-/* --- AJUSTES NO HEADER DO PAINEL PARA RECEBER O AVATAR --- */
 .perfil-header {
   display: flex;
   align-items: center;
@@ -262,7 +277,6 @@ textarea { resize: vertical; min-height: 80px; }
   font-size: 1.8rem;
 }
 
-/* Agrupando o botão de sair com o contador */
 .acoes-header {
   display: flex;
   align-items: center;
@@ -285,4 +299,48 @@ textarea { resize: vertical; min-height: 80px; }
   color: white;
 }
 
+/* ==========================================
+   FILTROS, ORDENAÇÃO E CATEGORIAS
+   ========================================== */
 
+.select-form {
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: 0.3s;
+}
+.select-form:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 8px rgba(59, 130, 246, 0.3); }
+
+.controlo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.filtros-categoria { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-categoria {
+  background: #1e293b; color: #94a3b8; border: 1px solid #334155; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s;
+}
+.btn-categoria:hover { background: #334155; color: white; }
+.btn-categoria.ativo { background: #3b82f6; color: white; border-color: #3b82f6; }
+
+.select-ordenacao {
+  background: #1e293b; color: white; border: 1px solid #334155; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-family: inherit; font-weight: bold;
+}
+
+.badge-cat {
+  background: #8b5cf6;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.7em;
+  font-weight: bold;
+  flex-shrink: 0; 
+}

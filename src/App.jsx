@@ -2,15 +2,18 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  // --- ESTADOS DE LOGIN ---
-  const [nickLogado, setNickLogado] = useState(''); // Quem está logado
-  const [inputNick, setInputNick] = useState('');   // O que está sendo digitado na tela de login
+  const [nickLogado, setNickLogado] = useState(''); 
+  const [inputNick, setInputNick] = useState('');   
 
-  // --- ESTADOS DO CRUD ---
   const [mods, setMods] = useState([]);
   const [busca, setBusca] = useState(''); 
+  
+  const [filtroCategoria, setFiltroCategoria] = useState('Todas');
+  const [ordenacao, setOrdenacao] = useState('Recentes');
+
   const [nome, setNome] = useState('');
   const [versao, setVersao] = useState('');
+  const [categoria, setCategoria] = useState('FPS'); 
   const [utilidade, setUtilidade] = useState('');
   const [idEmEdicao, setIdEmEdicao] = useState(null);
 
@@ -26,12 +29,12 @@ function App() {
   }, []);
 
   const limparFormulario = () => {
-    setNome(''); setVersao(''); setUtilidade(''); setIdEmEdicao(null);
+    setNome(''); setVersao(''); setCategoria('FPS'); setUtilidade(''); setIdEmEdicao(null);
   };
 
   const salvarModNoBanco = (e) => {
     e.preventDefault();
-    const dadosMod = { nome, versao, utilidade };
+    const dadosMod = { nome, versao, categoria, utilidade }; 
 
     const url = idEmEdicao ? `http://localhost:3000/mods/${idEmEdicao}` : 'http://localhost:3000/mods';
     const metodo = idEmEdicao ? 'PUT' : 'POST';
@@ -54,52 +57,63 @@ function App() {
   };
 
   const prepararEdicao = (mod) => {
-    setNome(mod.nome); setVersao(mod.versao); setUtilidade(mod.utilidade); setIdEmEdicao(mod.id);
+    setNome(mod.nome); 
+    setVersao(mod.versao); 
+    setCategoria(mod.categoria || 'FPS');
+    setUtilidade(mod.utilidade); 
+    setIdEmEdicao(mod.id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const fazerLogin = (e) => {
     e.preventDefault();
     if (inputNick.trim() !== '') {
-      setNickLogado(inputNick); // Salva o nick e avança para o painel
+      setNickLogado(inputNick); 
     }
   };
 
   const sair = () => {
-    setNickLogado(''); // Limpa o nick e volta pra tela de login
+    setNickLogado(''); 
     setInputNick('');
   };
 
-  const modsFiltrados = mods.filter(mod => 
+  let modsProcessados = mods.filter(mod => 
     mod.nome.toLowerCase().includes(busca.toLowerCase())
   );
 
+  if (filtroCategoria !== 'Todas') {
+    modsProcessados = modsProcessados.filter(mod => (mod.categoria || 'Outros') === filtroCategoria);
+  }
+
+  if (ordenacao === 'A-Z') {
+    modsProcessados.sort((a, b) => a.nome.localeCompare(b.nome));
+  } else if (ordenacao === 'Z-A') {
+    modsProcessados.sort((a, b) => b.nome.localeCompare(a.nome));
+  } else if (ordenacao === 'Recentes') {
+    modsProcessados.sort((a, b) => b.id - a.id);
+  }
+
+  const categoriasDisponiveis = ['Todas', 'FPS', 'PvP', 'Visual', 'Utilitário', 'Outros'];
+
   // ==========================================
-  // TELA DE LOGIN (Aparece se não tiver logado)
+  // TELA DE LOGIN 
   // ==========================================
   if (!nickLogado) {
     return (
       <div className="login-tela">
         <form className="login-box" onSubmit={fazerLogin}>
-          <h1>LabyMod - Mods</h1>
-          <p>Digite seu nick do Minecraft para acessar o painel</p>
           
-          {/* Avatar dinâmico na tela de login (muda enquanto digita) */}
-          <div className="login-avatar-preview">
-            <img 
-              src={inputNick ? `https://mc-heads.net/avatar/${inputNick}/100` : `https://mc-heads.net/avatar/steve/100`} 
-              alt="Preview da Skin" 
-            />
+          {/* NOVO: DIV QUE ALINHA A LOGO E O TÍTULO */}
+          <div className="header-box">
+            <img src="https://www.labymod.net/page/tpl/assets/images/white_wolf.png" alt="LabyMod Logo" className="logo-labymod" />
+            <h1>LabyMod - Mods</h1>
           </div>
 
-          <input 
-            type="text" 
-            placeholder="Seu Nick..." 
-            value={inputNick} 
-            onChange={(e) => setInputNick(e.target.value)} 
-            required 
-            className="input-login"
-          />
+          <p>Digite seu nick do Minecraft para acessar o painel</p>
+          <div className="login-avatar-preview">
+            <img src={inputNick ? `https://mc-heads.net/avatar/${inputNick}/100` : `https://mc-heads.net/avatar/steve/100`} alt="Preview da Skin" />
+          </div>
+          <input type="text" placeholder="Seu Nick..." value={inputNick} onChange={(e) => setInputNick(e.target.value)} required className="input-login" />
           <button type="submit" className="btn-salvar">Entrar no Painel</button>
         </form>
       </div>
@@ -107,23 +121,21 @@ function App() {
   }
 
   // ==========================================
-  // TELA PRINCIPAL (Seu painel completo)
+  // PAINEL PRINCIPAL
   // ==========================================
   return (
     <div className="container">
       <header>
-        {/* NOVO: Header com a foto do jogador */}
         <div className="perfil-header">
-          <img src={`https://mc-heads.net/avatar/${nickLogado}/60`} alt="Skin do Jogador" className="avatar-header" />
+          <img src={`https://mc-heads.net/avatar/${nickLogado}/60`} alt="Skin" className="avatar-header" />
           <div className="perfil-textos">
-            <h1>LabyMod - Mods</h1>
+            <h1> Meus Mods</h1>
             <p className="usuario">Logado como: <span>{nickLogado}</span></p>
           </div>
         </div>
-        
         <div className="acoes-header">
           <div className="contador-badge">
-            {modsFiltrados.length} {modsFiltrados.length === 1 ? 'Mod' : 'Mods'}
+            {modsProcessados.length} {modsProcessados.length === 1 ? 'Mod encontrado' : 'Mods encontrados'}
           </div>
           <button className="btn-sair" onClick={sair}>Sair</button>
         </div>
@@ -135,7 +147,16 @@ function App() {
           <div className="input-group">
             <input type="text" placeholder="Nome do Mod" value={nome} onChange={(e) => setNome(e.target.value)} required />
             <input type="text" placeholder="Versão" value={versao} onChange={(e) => setVersao(e.target.value)} required />
+            
+            <select value={categoria} onChange={(e) => setCategoria(e.target.value)} className="select-form" required>
+              <option value="FPS">FPS</option>
+              <option value="PvP">PvP</option>
+              <option value="Visual">Visual</option>
+              <option value="Utilitário">Utilitário</option>
+              <option value="Outros">Outros</option>
+            </select>
           </div>
+          
           <textarea placeholder="Utilidade..." value={utilidade} onChange={(e) => setUtilidade(e.target.value)} required></textarea>
           
           <div className="botoes-form">
@@ -150,14 +171,30 @@ function App() {
       </section>
 
       <div className="search-container">
-        <input 
-          type="text" className="search-input" placeholder="🔍 Pesquisar mod pelo nome..." 
-          value={busca} onChange={(e) => setBusca(e.target.value)}
-        />
+        <input type="text" className="search-input" placeholder="🔍 Pesquisar mod pelo nome..." value={busca} onChange={(e) => setBusca(e.target.value)} />
+      </div>
+
+      <div className="controlo-container">
+        <div className="filtros-categoria">
+          {categoriasDisponiveis.map(cat => (
+            <button 
+              key={cat} 
+              className={`btn-categoria ${filtroCategoria === cat ? 'ativo' : ''}`}
+              onClick={() => setFiltroCategoria(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+        <select className="select-ordenacao" value={ordenacao} onChange={(e) => setOrdenacao(e.target.value)}>
+          <option value="Recentes">Mais Recentes</option>
+          <option value="A-Z">A - Z</option>
+          <option value="Z-A">Z - A</option>
+        </select>
       </div>
 
       <div className="grid-mods">
-        {modsFiltrados.map(mod => (
+        {modsProcessados.map(mod => (
           <div key={mod.id} className="card-mod">
             <span className="id-tag">#{mod.id}</span>
             <div className="acoes-card">
@@ -167,6 +204,7 @@ function App() {
             <div className="card-header">
               <h2>{mod.nome}</h2>
               <span className="badge-v">{mod.versao}</span>
+              <span className="badge-cat">{mod.categoria || 'Outros'}</span>
             </div>
             <p className="utilidade">{mod.utilidade}</p>
           </div>
