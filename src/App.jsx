@@ -90,7 +90,7 @@ function App() {
         {mods.map(mod => (
           <div key={mod.id} className="card-mod">
             <span className="id-tag">#{mod.id}</span>
-            <button className="btn-eliminar" onClick={() => eliminarMod(mod.id)}>🗑️</button>
+            <button className="btn-eliminar" onClick={() => eliminarMod(mod.id)}>Excluir</button>
             <div className="card-header">
               <h2>{mod.nome}</h2>
               <span className="badge-v">{mod.versao}</span>
