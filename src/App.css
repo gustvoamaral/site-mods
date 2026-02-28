@@ -1,0 +1,70 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0f172a; /* Azul bem escuro */
+  color: #f8fafc;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #1e293b;
+  border-radius: 15px;
+  border-left: 5px solid #3b82f6; /* Azul StarDix */
+}
+
+.usuario { color: #94a3b8; font-size: 0.9em; }
+.usuario span { color: #3b82f6; font-weight: bold; }
+
+.btn-atualizar {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-atualizar:hover { background-color: #2563eb; transform: scale(1.05); }
+
+.grid-mods {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card-mod {
+  background-color: #1e293b;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.card-mod:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+
+.badge-v {
+  background: #334155;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  color: #3b82f6;
+}
+
+h2 { color: #f8fafc; margin: 0; font-size: 1.4em; }
+.utilidade { color: #94a3b8; line-height: 1.6; }
+.id-tag { position: absolute; top: 10px; right: 15px; color: #475569; font-size: 0.8em; }
