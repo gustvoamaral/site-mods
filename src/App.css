@@ -1,13 +1,15 @@
+/* Configurações Gerais */
 .container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 40px 20px;
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: #0f172a; /* Azul bem escuro */
+  font-family: 'Inter', sans-serif;
+  background-color: #0f172a;
   color: #f8fafc;
   min-height: 100vh;
 }
 
+/* Header Estilo StarDix */
 header {
   display: flex;
   justify-content: space-between;
@@ -16,25 +18,49 @@ header {
   padding: 20px;
   background: #1e293b;
   border-radius: 15px;
-  border-left: 5px solid #3b82f6; /* Azul StarDix */
+  border-left: 5px solid #3b82f6;
 }
 
-.usuario { color: #94a3b8; font-size: 0.9em; }
 .usuario span { color: #3b82f6; font-weight: bold; }
 
-.btn-atualizar {
-  background-color: #3b82f6;
+/* Formulário */
+.form-container {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  border: 1px solid #334155;
+}
+
+.form-container h2 { color: #3b82f6; margin-bottom: 20px; font-size: 1.2rem; }
+
+form { display: flex; flex-direction: column; gap: 15px; }
+
+.input-group { display: flex; gap: 15px; }
+
+input, textarea {
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+}
+
+.btn-salvar {
+  background: #3b82f6;
   color: white;
   border: none;
-  padding: 12px 24px;
+  padding: 15px;
   border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
-  font-weight: 600;
   transition: 0.3s;
 }
 
-.btn-atualizar:hover { background-color: #2563eb; transform: scale(1.05); }
+.btn-salvar:hover { background: #2563eb; }
 
+/* Grid de Cards */
 .grid-mods {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -47,24 +73,39 @@ header {
   border-radius: 12px;
   border: 1px solid #334155;
   position: relative;
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
-.card-mod:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-}
+.card-mod:hover { border-color: #3b82f6; }
 
-.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 
 .badge-v {
   background: #334155;
   padding: 2px 8px;
   border-radius: 4px;
-  font-size: 0.8em;
   color: #3b82f6;
+  font-size: 0.8em;
 }
 
-h2 { color: #f8fafc; margin: 0; font-size: 1.4em; }
-.utilidade { color: #94a3b8; line-height: 1.6; }
-.id-tag { position: absolute; top: 10px; right: 15px; color: #475569; font-size: 0.8em; }
+.id-tag { position: absolute; top: 10px; left: 15px; color: #475569; font-size: 0.8em; }
+
+/* Botão Eliminar */
+.btn-eliminar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.btn-eliminar:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+hr { border: 0; border-top: 1px solid #334155; margin-bottom: 40px; }
