@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #0f172a; /* Azul escuro no fundo da tela toda */
+  background-color: #0f172a;
   color: #f8fafc;
   font-family: 'Inter', system-ui, sans-serif;
 }
@@ -11,7 +11,7 @@ body {
 .container {
   max-width: 1000px;
   width: 100%;
-  margin: 0 auto; /* Isso aqui é o que garante que fique no meio da tela! */
+  margin: 0 auto;
   padding: 40px 20px;
   box-sizing: border-box;
   min-height: 100vh;
@@ -34,7 +34,6 @@ header {
 .usuario { margin: 5px 0 0 0; color: #94a3b8; font-size: 0.9em; }
 .usuario span { color: #3b82f6; font-weight: bold; }
 
-/* Badge do Contador */
 .contador-badge {
   background: #3b82f6;
   color: white;
@@ -74,73 +73,214 @@ input, textarea {
 input:focus, textarea:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 8px rgba(59, 130, 246, 0.3); }
 textarea { resize: vertical; min-height: 80px; }
 
-.btn-salvar {
-  background: #3b82f6;
-  color: white;
-  border: none;
-  padding: 15px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 1.05rem;
-}
-
+.botoes-form { display: flex; gap: 15px; }
+.btn-salvar { flex: 1; background: #3b82f6; color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1.05rem; }
 .btn-salvar:hover { background: #2563eb; transform: translateY(-2px); }
+.btn-cancelar { background-color: #475569; color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.btn-cancelar:hover { background-color: #334155; }
 
 /* --- BARRA DE PESQUISA --- */
 .search-container { margin-bottom: 30px; }
 .search-input { width: 100%; box-sizing: border-box; }
 
 /* --- GRID E CARDS DE MODS --- */
-.grid-mods {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+.grid-mods { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  gap: 20px; 
 }
 
-.card-mod {
-  background-color: #1e293b;
-  padding: 25px 25px 20px 25px;
-  border-radius: 12px;
-  border: 1px solid #334155;
-  position: relative;
-  transition: 0.3s;
+.card-mod { 
+  background-color: #1e293b; 
+  padding: 20px; 
+  border-radius: 12px; 
+  border: 1px solid #334155; 
+  position: relative; /* Segura os elementos absolutos (tags e botões) */
+  transition: 0.3s; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .card-mod:hover { 
   border-color: #3b82f6; 
   transform: translateY(-5px); 
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); 
 }
 
-.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; margin-top: 10px;}
-.card-header h2 { margin: 0; font-size: 1.3rem; color: #f8fafc; }
+/* ID Tag no topo esquerdo */
+.id-tag { 
+  position: absolute; 
+  top: 15px; 
+  left: 20px; 
+  color: #475569; 
+  font-size: 0.9em; 
+  font-weight: bold; 
+}
 
-.badge-v {
-  background: #334155;
-  padding: 4px 8px;
-  border-radius: 4px;
-  color: #3b82f6;
-  font-size: 0.8em;
+/* Container dos botões no topo direito */
+.acoes-card { 
+  position: absolute; 
+  top: 15px; 
+  right: 15px; 
+  display: flex; 
+  gap: 8px; 
+}
+
+/* Estilo dos Botões Coloridos */
+.btn-editar { 
+  background-color: #f59e0b; 
+  color: white; 
+  border: none; 
+  padding: 6px 12px; 
+  border-radius: 6px; 
+  cursor: pointer; 
+  font-size: 0.75rem; 
+  font-weight: bold; 
+  transition: 0.3s; 
+}
+.btn-editar:hover { background-color: #d97706; transform: translateY(-2px); }
+
+.btn-eliminar { 
+  background-color: #ef4444; 
+  color: white; 
+  border: none; 
+  padding: 6px 12px; 
+  border-radius: 6px; 
+  cursor: pointer; 
+  font-size: 0.75rem; 
+  font-weight: bold; 
+  transition: 0.3s; 
+}
+.btn-eliminar:hover { background-color: #dc2626; transform: translateY(-2px); }
+
+/* --- TÍTULO E VERSÃO --- */
+.card-header { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  margin-top: 35px; /* Empurra o título para baixo para não bater nos botões */
+  margin-bottom: 12px; 
+}
+
+.card-header h2 { 
+  margin: 0; 
+  font-size: 1.3rem; 
+  color: #f8fafc; 
+}
+
+.badge-v { 
+  background: #334155; 
+  padding: 4px 8px; 
+  border-radius: 4px; 
+  color: #3b82f6; 
+  font-size: 0.8em; 
+  font-weight: bold; 
+}
+
+.utilidade { 
+  color: #cbd5e1; 
+  line-height: 1.5; 
+  margin-bottom: 0; 
+}
+
+/* ==========================================
+   ESTILOS DA TELA DE LOGIN E AVATARES
+   ========================================== */
+
+/* Tela de login centralizada */
+.login-tela {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0f172a;
+}
+
+/* Caixa de login parecida com um launcher */
+.login-box {
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-box h1 {
+  color: #f8fafc;
+  margin-top: 0;
+}
+
+.login-box p {
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+/* Preview da skin girando enquanto digita o nick */
+.login-avatar-preview {
+  margin-bottom: 25px;
+}
+
+.login-avatar-preview img {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  border: 3px solid #3b82f6;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+  background-color: #0f172a;
+  image-rendering: pixelated; /* Deixa o gráfico estilo Minecraft (sem borrar) */
+}
+
+/* Input específico do login */
+.input-login {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* --- AJUSTES NO HEADER DO PAINEL PARA RECEBER O AVATAR --- */
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.avatar-header {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 2px solid #3b82f6;
+  image-rendering: pixelated;
+}
+
+.perfil-textos h1 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 1.8rem;
+}
+
+/* Agrupando o botão de sair com o contador */
+.acoes-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-sair {
+  background-color: transparent;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+  padding: 6px 12px;
+  border-radius: 6px;
   font-weight: bold;
-}
-
-.id-tag { position: absolute; top: 15px; left: 20px; color: #475569; font-size: 0.8em; font-weight: bold; }
-.utilidade { color: #cbd5e1; line-height: 1.5; margin-bottom: 0; }
-
-/* Botão Eliminar */
-.btn-eliminar {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: transparent;
-  border: none;
   cursor: pointer;
-  font-size: 0.9rem;
-  opacity: 0.5;
   transition: 0.3s;
 }
 
-.btn-eliminar:hover { opacity: 1; transform: scale(1.2); }
+.btn-sair:hover {
+  background-color: #ef4444;
+  color: white;
+}
