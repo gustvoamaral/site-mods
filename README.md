@@ -1,4 +1,4 @@
-# 🌟 Mods - LabyMod
+# Mods - LabyMod
 
 Este é o Front-End do meu painel pessoal de gerenciamento de mods de Minecraft. **Este painel foi desenvolvido especificamente para interagir em conjunto com a minha própria API REST (Back-end)**, permitindo registrar, visualizar, editar e excluir addons e mods (como os do LabyMod) de forma totalmente dinâmica. Construído com **React** e **Vite**, ele conta com um design moderno (Dark Mode), responsivo e customizado.
 
