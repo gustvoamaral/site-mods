@@ -120,9 +120,6 @@ function App() {
     );
   }
 
-  // ==========================================
-  // PAINEL PRINCIPAL
-
   return (
     <div className="container">
       <header>
