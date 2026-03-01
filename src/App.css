@@ -210,7 +210,6 @@ textarea { resize: vertical; min-height: 80px; }
   width: 100%;
 }
 
-/* NOVO: Estilo para a Logo e o Título do Login lado a lado */
 .header-box {
   display: flex;
   align-items: center;
@@ -227,7 +226,7 @@ textarea { resize: vertical; min-height: 80px; }
 
 .login-box h1 {
   color: #f8fafc;
-  margin: 0; /* Agora a margem é controlada pela div header-box */
+  margin: 0; 
 }
 
 .login-box p {
