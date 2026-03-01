@@ -1,16 +1,42 @@
-# React + Vite
+# Mods - LabyMod
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o Front-End do meu painel pessoal de gerenciamento de mods de Minecraft. **Este painel foi desenvolvido especificamente para interagir em conjunto com a minha própria API REST (Back-end)**, permitindo registrar, visualizar, editar e excluir addons e mods (como os do LabyMod) de forma totalmente dinâmica. Construído com **React** e **Vite**, ele conta com um design moderno (Dark Mode), responsivo e customizado.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Autenticação imersiva com tela de login personalizada, logo do LabyMod e visualização da skin em tempo real (via API `mc-heads.net`).
+- CRUD Completo (Criação, Leitura, Atualização e Deleção de mods) consumindo a API REST local.
+- Busca dinâmica de mods instantaneamente sem recarregar a página.
+- Sistema avançado de filtros por categorias (FPS, PvP, Visual, etc.) e ordenação alfabética ou por data de adição.
 
-## React Compiler
+## 🛠️ Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React (Hooks: `useState`, `useEffect`)
+- Vite (Build tool rápida)
+- CSS3 (Variáveis, Flexbox, Grid, Responsividade)
+- JavaScript (ES6+)
+- Fetch API (Comunicação com o Back-end)
 
-## Expanding the ESLint configuration
+## 📦 Instalação
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Certifique-se de que a API (api-mods-labymod) está rodando localmente na porta `3000`. (https://github.com/gustvoamaral/api-mods-labymod)
+2. Clone este repositório:
+   ```sh
+   git clone https://github.com/gustvoamaral/site-mods.git
+3. Acesse a pasta do projeto: `cd site-mods`
+4. Instale as dependências: `npm install`
+
+
+## ▶️ Uso
+
+Para iniciar o servidor de desenvolvimento do painel, execute:
+```sh
+npm run dev
+```
+Após executar, acesse o link gerado no seu terminal (geralmente http://localhost:5173).
+
+
+## 📄 Open Source
+Este painel foi desenvolvido por mim e serve como a minha base principal de estudos para praticar e aprimorar minhas habilidades em programação e desenvolvimento web.
+
+O projeto é Open Source (código aberto), o que significa que, além de poder acompanhar a minha evolução no código, você é totalmente livre para clonar, estudar, modificar e usar como base para os seus próprios aprendizados e projetos!
