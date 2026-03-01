@@ -94,10 +94,8 @@ function App() {
   }
 
   const categoriasDisponiveis = ['Todas', 'FPS', 'PvP', 'Visual', 'Utilitário', 'Outros'];
-
-  // ==========================================
+  
   // TELA DE LOGIN 
-  // ==========================================
   if (!nickLogado) {
     return (
       <div className="login-tela">
