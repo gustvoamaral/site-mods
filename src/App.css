@@ -77,10 +77,8 @@ textarea { resize: vertical; min-height: 80px; }
 .btn-cancelar { background-color: #475569; color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
 .btn-cancelar:hover { background-color: #334155; }
 
-
 .search-container { margin-bottom: 30px; }
 .search-input { width: 100%; box-sizing: border-box; }
-
 
 .grid-mods { 
   display: grid; 
