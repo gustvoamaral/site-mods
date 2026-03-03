@@ -83,7 +83,7 @@ textarea { resize: vertical; min-height: 80px; }
 .search-container { margin-bottom: 30px; }
 .search-input { width: 100%; box-sizing: border-box; }
 
-/* --- GRID E CARDS DE MODS --- */
+
 .grid-mods { 
   display: grid; 
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
