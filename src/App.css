@@ -187,10 +187,6 @@ textarea { resize: vertical; min-height: 80px; }
   word-break: break-word; 
 }
 
-/* ==========================================
-   ESTILOS DA TELA DE LOGIN E AVATARES
-   ========================================== */
-
 .login-tela {
   display: flex;
   justify-content: center;
