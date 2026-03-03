@@ -17,7 +17,7 @@ body {
   min-height: 100vh;
 }
 
-/* --- HEADER (CABEÇALHO) --- */
+
 header {
   display: flex;
   justify-content: space-between;
@@ -43,7 +43,7 @@ header {
   font-weight: bold;
 }
 
-/* --- FORMULÁRIO --- */
+
 .form-container {
   background: #1e293b;
   padding: 25px;
