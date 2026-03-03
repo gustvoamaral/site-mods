@@ -152,7 +152,7 @@ textarea { resize: vertical; min-height: 80px; }
 }
 .btn-eliminar:hover { background-color: #dc2626; transform: translateY(-2px); }
 
-/* --- TÍTULO E VERSÃO --- */
+
 .card-header { 
   display: flex; 
   align-items: center; 
