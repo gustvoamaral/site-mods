@@ -48,7 +48,7 @@ function App() {
       if (res.ok) { buscarMods(); limparFormulario(); }
     });
   };
-
+//removermod
   const eliminarMod = (id) => {
     if (window.confirm("Deseja remover este mod?")) {
       fetch(`http://localhost:3000/mods/${id}`, { method: 'DELETE' })
